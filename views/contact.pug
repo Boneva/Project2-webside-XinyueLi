@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Contact Us
+  body
+    h1 Contact Us
+
+    form(action="/contact", method="POST")
+      label Your Name:
+      input(type="text", name="name", required)
+      label Email:
+      input(type="email", name="email", required)
+      label Message:
+      textarea(name="message", rows="5", required)
+      button(type="submit") Send
+
+    a(href="/") Back to Home
