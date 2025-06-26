@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 
 dotenv.config();
 const app = express();
-
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home' });
 });
+app.get('/', (req, res) => {
+  const year = new Date().getFullYear();
+  res.render('index', { title: 'Home', year });
+});
+
 // Sign In Page
 app.get('/signin', (req, res) => {
   res.render('signin', { message: null });
