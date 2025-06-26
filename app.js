@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home' });
 });
+
 app.get('/', (req, res) => {
   const year = new Date().getFullYear();
   res.render('index', { title: 'Home', year });
