@@ -1,9 +1,41 @@
 doctype html
 html
   head
-    title Game Catalog
+    title Games by MBTI
+    link(rel="stylesheet", href="/css/style.css")
   body
-    h1 Game Catalog
-    ul
-      each game in games
-        li #{game.title} - #{game.mbti}
+    header
+      .logo
+        a(href="/")
+          img(src="/images/logo.png", style="height: 80px;")
+
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/contact") Contact Us
+          li: a(href="/games") Games List
+
+          if user
+            li: a(href="/profile") Profile
+            li: a.signout-btn(href="/signout") Sign Out
+          else
+            li: a.signin-btn(href="/signin") Sign In
+
+
+    main.container
+      h1 Game Recommendations by MBTI Type
+      .game-grid
+        each game in games
+          .game-card
+            p.mbti-type #{game.mbti}
+            img(src=game.image, alt=game.title)
+            h2= game.title
+            p.description= game.desc
+
+    footer
+      img(src="/images/logo.png", style="height: 20px;")
+      span © 2025 GameMatch. All rights reserved. Privacy Policy Terms of Service
+      .social
+        i.fa.fa-instagram
+        i.fa.fa-facebook
+        i.fa.fa-twitter

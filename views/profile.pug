@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    title Your Profile - Game Match
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header
+      .logo
+        a(href="/")
+          img(src="/images/logo.png", alt="Game Match Logo", style="height: 80px;")
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/contact") Contact Us
+          li: a(href="/games") Games List
+          li: a.signout-btn(href="/signout") Sign Out
+
+    main.container
+      h3  Welcome, #{user.email}
+
+      .profile-info
+        .profile-pic
+          if user.profileImage
+            img(src=`${user.profileImage}`, alt="Profile Picture", style="height: 120px; border-radius: 50%;")
+          else
+            img(src="/images/avatar.png", alt="Default Avatar", style="height: 120px; border-radius: 50%;")
+
+        .user-info
+          p
+            strong Gender:
+            |  #{user.gender}
+          p
+            strong Birthday:
+            |  #{user.birthday || 'N/A'}
+          p
+            strong MBTI:
+            |  #{user.mbti || 'Not provided'}
+
+      //- Game Recommendation Section
+      if user.mbti
+        .recommendation
+          h2 Game Recommendation for #{user.mbti}
+          p Based on your MBTI, we recommend:
+          h3= result || 'Please check back soon for your match!'
+      else
+        .recommendation
+          h2 Game Recommendation
+          p MBTI not available. Please update your profile to get a game recommendation.
+
+    footer
+      img(src="/images/logo.png", style="height: 20px;")
+      span © 2025 GameMatch. All rights reserved. Privacy Policy Terms of Service
+      .social
+        i.fa.fa-instagram
+        i.fa.fa-facebook
+        i.fa.fa-twitter

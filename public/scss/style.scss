@@ -1,32 +1,332 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f7f7f7;
-  padding: 30px;
-  color: #333;
+@use 'color' as *;
 
-  h1 {
-    color: #2c3e50;
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 80px;
+  background-color: $off-white;
+  border-bottom: 1px solid $misty-gray;
+  overflow: hidden;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+
+  li a {
+    text-decoration: none;
+    color: $charcoal-black;
+    font-weight: 500;
+    padding: 4px 8px;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: $electric-blue;
+    }
+  }
+}
+
+header .signin-btn {
+  padding: 6px 14px;
+  background-color: $electric-blue;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $hover-white;
+  }
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 5%;
+  gap: 40px;
+  border-bottom: 1px solid $ivory-gray;
+
+  .content {
+    flex: 1;
   }
 
-  nav ul {
-    list-style: none;
-    padding: 0;
+  .image {
+    width: 40%;
+    height: 200px;
+  }
 
-    li {
-      margin: 10px 0;
-      a {
-        color: #1c87c9;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+  button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .primary {
+    background-color: $text-dark;
+    color: #fff;
+  }
+
+  .secondary {
+    background-color: $light-gray;
+    color: $text-dark;
+  }
+}
+
+/* Features */
+.features {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 5%;
+  border-bottom: 1px solid $medium-gray;
+  gap: 40px;
+
+  .left,
+  .right {
+    flex: 1;
+  }
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    background-color: $ivory-gray;
+    border-radius: 50%;
+  }
+}
+
+/* MBTI Section */
+.mbti-section {
+  padding: 2rem;
+  background: $background-gray;
+  text-align: center;
+
+  .mbti-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+
+    .mbti-column {
+      flex: 1 1 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
-  footer {
-    margin-top: 40px;
-    font-size: 0.9em;
-    color: #888;
+  .mbti-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
   }
+
+  .mbti-slider {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    width: 100%;
+    height: 150px;
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .mbti-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: $text-light;
+  border-top: 1px solid $ivory-gray;
+
+  .social {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+/* Auth / Sign-in Page */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f2f2f2;
+}
+
+.container {
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px $shadow-gray;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid $ivory-gray;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 0.7rem;
+    background: $auth-blue;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+.error-message {
+  color: $text-error;
+  font-weight: bold;
+}
+
+/* Game List */
+.games-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.game-card {
+  background: $subtle-gray;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0.2rem;
+    color: $charcoal-black;
+  }
+
+  .mbti-type {
+    font-weight: bold;
+    color: $highlight-purple;
+    font-size: 1rem;
+    margin: 0.2rem 0;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    color: $text-dark;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Profile */
+.profile-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+
+  .profile-pic img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-info p {
+    margin: 0.5rem 0;
+  }
+}
+
+.center-text {
+  text-align: center;
 }

@@ -1,21 +1,94 @@
 doctype html
-html(lang="en")
+html
   head
-    title Game Match - Home
+    title Game Match
     link(rel="stylesheet", href="/css/style.css")
   body
-    h1 Welcome to Game Match!
+    header
+      .logo
+        a(href="/")
+          img(src="/images/logo.png", style="height: 80px;")
 
-    p Discover games based on your MBTI personality type.
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/contact") Contact Us
+          li: a(href="/games") Games List
 
-    nav
-      ul
-        li: a(href="/signup") Sign Up
-        li: a(href="/signin") Sign In
-        li: a(href="/recommend") Game Recommendation
-        li: a(href="/games") Game Catalog
-        li: a(href="/contact") Contact Us
+          if user
+            li: a(href="/profile") Profile
+            li: a.signout-btn(href="/signout") Sign Out
+          else
+            li: a.signin-btn(href="/signin") Sign In
 
-   footer
-  p &copy; #{year} Game Match
 
+
+    section.hero
+      .content
+        h1 Game of today
+        
+        h2 Riders Republic
+        p Jump into a massive multiplayer playground! Bike, ski, snowboard, or wingsuit across an open world sports paradise.
+        button.primary
+           a(href="https://store.steampowered.com/app/2290180/Riders_Republic/" target="_blank" style="color: white; text-decoration: none; display: block;") Learn more
+
+        
+      .image
+        img(src="/images/gameoftoday.jpg", style="width: 400px; height: auto;")
+
+    section.features
+      .left
+        h3 Discover Games That Match Your Personality
+        p Our smart MBTI-based recommendation system helps you find games that truly fit your style—whether you’re a strategic mastermind, a laid-back explorer, or a fast-paced thrill-seeker.
+
+      .right
+        .feature-item
+          .icon
+          .text
+            strong Personality-Driven Matching
+            p Get suggestions based on your MBTI type to better connect with the gameplay and story.
+
+        // Repeat for more features
+    section.mbti-section
+        h2 Find the game for you
+        p Find out the best game for you from Your MBTI personality category
+
+        .mbti-container
+          .mbti-column
+            label.mbti-label
+            input(type="range" id="ie" min="0" max="1" step="1" value="0" oninput="updateMBTIValue('ie', 'I', 'E')")
+            span.mbti-value#ie-value I
+          .mbti-column
+            label.mbti-label
+            input(type="range" id="sn" min="0" max="1" step="1" value="0" oninput="updateMBTIValue('sn', 'S', 'N')")
+            span.mbti-value#sn-value S
+          .mbti-column
+            label.mbti-label
+            input(type="range" id="tf" min="0" max="1" step="1" value="0" oninput="updateMBTIValue('tf', 'T', 'F')")
+            span.mbti-value#tf-value T
+          .mbti-column
+            label.mbti-label
+            input(type="range" id="jp" min="0" max="1" step="1" value="0" oninput="updateMBTIValue('jp', 'J', 'P')")
+            span.mbti-value#jp-value J
+
+        a#recommend-btn(href="/games" class="recommend-button") Recommend a Game
+
+        .recommendation-result
+          h3#result-title
+          img#result-image(style="max-width: 300px; display: none;")
+          p#result-desc
+
+    script.
+      function updateMBTIValue(id, leftChar, rightChar) {
+        const slider = document.getElementById(id);
+        const valueDisplay = document.getElementById(`${id}-value`);
+        valueDisplay.textContent = slider.value === "0" ? leftChar : rightChar;
+      }
+
+  footer
+    img(src="/images/logo.png", style="height: 20px;")
+    span © 2025 GameMatch. All rights reserved. Privacy Policy Terms of Service
+    .social
+      i.fa.fa-instagram
+      i.fa.fa-facebook
+      i.fa.fa-twitter

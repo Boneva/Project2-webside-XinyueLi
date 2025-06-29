@@ -2,16 +2,49 @@ doctype html
 html
   head
     title Contact Us
+    link(rel="stylesheet", href="/css/style.css")
   body
-    h1 Contact Us
+    header
+      .logo
+        a(href="/")
+          img(src="/images/logo.png", style="height: 80px;")
 
-    form(action="/contact", method="POST")
-      label Your Name:
-      input(type="text", name="name", required)
-      label Email:
-      input(type="email", name="email", required)
-      label Message:
-      textarea(name="message", rows="5", required)
-      button(type="submit") Send
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/contact") Contact Us
+          li: a(href="/games") Games List
 
-    a(href="/") Back to Home
+          if user
+            li: a(href="/profile") Profile
+            li: a.signout-btn(href="/signout") Sign Out
+          else
+            li: a.signin-btn(href="/signin") Sign In
+
+
+    main.container
+      h1 Contact Us
+
+      form(action="/contact", method="POST", class="auth-form")
+        label(for="name") Your Name:
+        input(type="text", name="name", id="name", required)
+
+        label(for="email") Email:
+        input(type="email", name="email", id="email", required)
+
+        label(for="message") Message:
+        textarea(name="message", id="message", rows="5", required)
+
+        button(type="submit") Send
+
+      p
+        a(href="/") ← Back to Home
+
+    footer
+      .footer-left
+        img(src="/images/logo.png", style="height: 20px;")
+        span © 2025 GameMatch. All rights reserved. Privacy Policy Terms of Service
+      .social
+        i.fa.fa-instagram
+        i.fa.fa-facebook
+        i.fa.fa-twitter

@@ -1,19 +1,50 @@
 doctype html
 html
   head
-    title Sign In
+    title Game Match
+    link(rel="stylesheet", href="/css/style.css")
   body
-    h1 Sign In
+    header
+      .logo
+        a(href="/")
+          img(src="/images/logo.png", style="height: 80px;")
 
-    if message
-      p(style="color:red") #{message}
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/contact") Contact Us
+          li: a(href="/games") Games List
 
-    form(action="/signin", method="POST")
-      label Email:
-      input(type="email", name="email", required)
-      label Password:
-      input(type="password", name="password", required)
-      button(type="submit") Login
+          if user
+            li: a(href="/profile") Profile
+            li: a.signout-btn(href="/signout") Sign Out
+          else
+            li: a.signin-btn(href="/signin") Sign In
 
-    p Don't have an account?
-      a(href="/signup") Sign up here
+
+    main.container
+      h1 Sign In to Your Account
+
+      if message
+        p.error-message #{message}
+
+      form(action="/signin", method="POST", class="auth-form")
+        label(for="email") Email:
+        input(type="email", name="email", id="email", required)
+
+        label(for="password") Password:
+        input(type="password", name="password", id="password", required)
+
+        button(type="submit") Sign In
+
+      p Don’t have an account?
+        a(href="/signup") Sign Up here.
+
+    footer
+      .footer-left
+        img(src="/images/logo.png", style="height: 20px;")
+        span © 2025 GameMatch. All rights reserved. Privacy Policy Terms of Service
+      .social
+        i.fa.fa-instagram
+        i.fa.fa-facebook
+        i.fa.fa-twitter

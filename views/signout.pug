@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Signed Out - Game Match
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header
+      .logo
+        a(href="/")
+          img(src="/images/logo.png", alt="Game Match Logo", style="height: 80px;")
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/contact") Contact Us
+          li: a(href="/games") Games List
+          li: a.signin-btn(href="/signin") Sign In
+
+    main.container
+      h1 Thank You!
+      p You’ve successfully signed out.
+      a.button(href="/") Return to Home
+
+    footer
+      img(src="/images/logo.png", style="height: 20px;")
+      span © 2025 GameMatch. All rights reserved. Privacy Policy Terms of Service
+      .social
+        i.fa.fa-instagram
+        i.fa.fa-facebook
+        i.fa.fa-twitter
