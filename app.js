@@ -14,11 +14,12 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
-  secret: 'your-secret-key', // make sure this is strong in production
+  secret: 'your-secret-key', // Replace with a strong secret in production
   resave: false,
   saveUninitialized: false,
+  rolling: true, // Reset cookie expiration on every request
   cookie: {
-    maxAge: 30 * 60 * 1000 // 30 minutes
+    maxAge: 10 * 60 * 1000 // 10 minutes
   }
 }));
 
@@ -35,6 +36,11 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home' });
